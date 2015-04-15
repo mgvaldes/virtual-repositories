@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Virtual Restuarants</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Button Strings -->
+    <string name="client_button_text">Cliente</string>
+    <string name="restaurant_button_text">Restaurante</string>
+    <string name="enter_button_text">Entrar</string>
+
+    <!-- TextView Strings -->
+    <string name="restaurant_code_text">Código restaurante</string>
+    <string name="terms_and_conditions_text">Accediendo aceptas los Términos y Condiciones y la Política de Privacidad</string>
+
+    <!-- Title Activity Strings -->
+    <string name="title_activity_code_validation">CodeValidation</string>
+    <string name="title_activity_login">Login</string>
+</resources>
