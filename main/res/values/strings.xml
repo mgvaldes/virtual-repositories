@@ -8,10 +8,14 @@
     <string name="client_button_text">Cliente</string>
     <string name="restaurant_button_text">Restaurante</string>
     <string name="enter_button_text">Entrar</string>
+    <string name="restaurant_categories_button_text">Ver Categorias</string>
 
     <!-- TextView Strings -->
     <string name="restaurant_code_text">Código restaurante</string>
     <string name="terms_and_conditions_text">Accediendo aceptas los Términos y Condiciones y la Política de Privacidad</string>
+    <string name="restaurant_name_text">Restaurant 1</string>
+    <string name="restaurant_description_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="restaurant_category_name_text">Categoria Restaurant 1</string>
 
     <!-- Title Activity Strings -->
     <string name="title_activity_code_validation">CodeValidation</string>

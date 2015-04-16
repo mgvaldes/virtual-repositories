@@ -1,9 +1,12 @@
 package com.tek3.restaurant.views;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.tek3.restaurant.R;
 
@@ -13,6 +16,15 @@ public class CodeValidation extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_validation);
+
+        Button codeValidationButton = (Button) findViewById(R.id.codeValidationButton);
+        codeValidationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent codeValidationActivity = new Intent(CodeValidation.this, Sponsor.class);
+                CodeValidation.this.startActivity(codeValidationActivity);
+            }
+        });
     }
 
 
