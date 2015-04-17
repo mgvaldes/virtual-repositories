@@ -20,7 +20,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/restaurant_code_text"
             android:id="@+id/restaurantCodeTextView"
             android:layout_marginBottom="15dp" />
 
@@ -44,7 +43,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/terms_and_conditions_text"
             android:id="@+id/termsAndConditionsTextView"
             android:layout_marginBottom="15dp"
             android:gravity="center" />
@@ -52,7 +50,7 @@
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="@string/enter_button_text"
+            android:text="@string/esp_enter_button_text"
             android:id="@+id/codeValidationButton" />
 
 

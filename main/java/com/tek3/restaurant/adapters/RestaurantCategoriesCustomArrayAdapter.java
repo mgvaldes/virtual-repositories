@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -33,14 +34,25 @@ import java.util.Map;
 public class RestaurantCategoriesCustomArrayAdapter extends ArrayAdapter<RestaurantCategory> {
     private LayoutInflater layoutInflater;
     private List<RestaurantCategory> restaurantCategoryList;
+    private HashMap<Integer, Boolean> restaurantCategoryImageViewStatus;
+    private HashMap<Integer, Bitmap> restaurantCategoryBitmapList;
     private HashMap<Integer, ImageView> restaurantCategoryImageViewList;
 
-    public RestaurantCategoriesCustomArrayAdapter(Context context, int resource, List<RestaurantCategory> objects) {
-        super(context, resource, objects);
+    public RestaurantCategoriesCustomArrayAdapter(Context context, List<RestaurantCategory> objects) {
+        super(context, 0, objects);
 
         layoutInflater = LayoutInflater.from(context);
         restaurantCategoryList = objects;
+        restaurantCategoryImageViewStatus = new HashMap<Integer, Boolean>();
+        restaurantCategoryBitmapList = new HashMap<Integer, Bitmap>();
         restaurantCategoryImageViewList = new HashMap<Integer, ImageView>();
+
+        Bitmap loadingBitmap = ((BitmapDrawable)context.getResources().getDrawable(R.drawable.loading_image)).getBitmap();
+
+        for (int i = 0; i < restaurantCategoryList.size(); i++) {
+            restaurantCategoryImageViewStatus.put(i, false);
+            restaurantCategoryBitmapList.put(i, loadingBitmap);
+        }
     }
 
     @Override
@@ -56,7 +68,15 @@ public class RestaurantCategoriesCustomArrayAdapter extends ArrayAdapter<Restaur
 
         restaurantCategoryImageViewList.put(position, restaurantCategoryImageView);
 
+        if (!restaurantCategoryImageViewStatus.get(position)) {
+            restaurantCategoryImageView.setImageBitmap(((BitmapDrawable)getContext().getResources().getDrawable(R.drawable.loading_image)).getBitmap());
 
+            Log.w("CargaDinamicaBitmaps", "Iniciando descargda de categoria: " + restaurantCategory.getRestaurantCategoryName() + " en posicion: " + position);
+            new HttpRequestTaskDownloadRestaurantCategoryImage(restaurantCategory.getRestaurantCategoryImageURL(), position).execute();
+        }
+        else {
+            restaurantCategoryImageView.setImageBitmap(restaurantCategoryBitmapList.get(position));
+        }
 
         return convertView;
     }
@@ -111,6 +131,7 @@ public class RestaurantCategoriesCustomArrayAdapter extends ArrayAdapter<Restaur
                 getRequest.abort();
 
                 Log.w("ImageDownloader", "Error while retrieving bitmap from " + restaurantCategoryImageURL, e);
+                e.printStackTrace();
             }
             finally {
                 if (client != null) {
@@ -134,9 +155,14 @@ public class RestaurantCategoriesCustomArrayAdapter extends ArrayAdapter<Restaur
          *
          */
         @Override
-        protected void onPostExecute(Bitmap restaurantCategoryImage) {
+        protected void onPostExecute(Bitmap restaurantCategoryBitmap) {
             ImageView restaurantCategoryImageView = restaurantCategoryImageViewList.get(restaurantCategoryImageViewPosition);
-            restaurantCategoryImageView.setImageBitmap(restaurantCategoryImage);
+            restaurantCategoryImageView.setImageBitmap(restaurantCategoryBitmap);
+
+            restaurantCategoryImageViewStatus.put(restaurantCategoryImageViewPosition, true);
+            restaurantCategoryBitmapList.put(restaurantCategoryImageViewPosition, restaurantCategoryBitmap);
+
+            Log.w("CargaDinamicaBitmaps", "Actualizando bitmap de categoria en posicion: " + restaurantCategoryImageViewPosition);
         }
     }
 }

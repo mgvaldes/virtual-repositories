@@ -7,17 +7,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.tek3.restaurant.GlobalState;
 import com.tek3.restaurant.R;
 
 public class CodeValidation extends Activity {
+    GlobalState globalState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code_validation);
 
+        globalState = ((GlobalState) getApplicationContext());
+
+        TextView restaurantCodeTextView = (TextView) findViewById(R.id.restaurantCodeTextView);
+        restaurantCodeTextView.setText(globalState.getLanguageResources().get("restaurant_code_text"));
+
+        TextView termsAndConditionsTextView = (TextView) findViewById(R.id.termsAndConditionsTextView);
+        termsAndConditionsTextView.setText(globalState.getLanguageResources().get("terms_and_conditions_text"));
+
         Button codeValidationButton = (Button) findViewById(R.id.codeValidationButton);
+        codeValidationButton.setText(globalState.getLanguageResources().get("enter_button_text"));
         codeValidationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

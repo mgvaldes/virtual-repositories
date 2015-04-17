@@ -12,15 +12,21 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/client_button_text"
         android:id="@+id/clientButton"
         android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/restaurant_button_text"
         android:id="@+id/restaurantButton"
-        android:layout_below="@id/clientButton"/>
+        android:layout_below="@id/clientButton"
+        android:layout_marginBottom="20dp"/>
+
+    <Spinner
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/languagesOptions"
+        android:layout_below="@id/restaurantButton"
+        android:entries="@array/languages_options"/>
 
 </RelativeLayout>
