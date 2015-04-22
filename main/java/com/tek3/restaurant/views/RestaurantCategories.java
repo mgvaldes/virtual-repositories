@@ -33,9 +33,9 @@ public class RestaurantCategories extends ListActivity {
 
         RestaurantCategory selectedRestaurantCategory = (RestaurantCategory) getListView().getItemAtPosition(position);
 
-        Intent categoryRecipiesActivity = new Intent(RestaurantCategories.this, CategoryRecipies.class);
+        Intent recipiesActivity = new Intent(RestaurantCategories.this, Recipies.class);
 
-        RestaurantCategories.this.startActivity(categoryRecipiesActivity);
+        RestaurantCategories.this.startActivity(recipiesActivity);
     }
 
     public List<RestaurantCategory> initStaticRestaurantCategories() {

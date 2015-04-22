@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tek3.restaurant" >
 
+    <uses-sdk android:minSdkVersion="15"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -45,12 +47,19 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"/>
         <activity
-            android:name=".views.CategoryRecipies"
+            android:name=".views.Recipies"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
             android:name=".views.RecipeDetails"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+
+        <activity
+            android:name=".views.Advertisings"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>

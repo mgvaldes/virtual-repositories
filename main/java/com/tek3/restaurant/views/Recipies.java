@@ -3,11 +3,14 @@ package com.tek3.restaurant.views;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.tek3.restaurant.R;
-import com.tek3.restaurant.adapters.CategoryRecipiesCustomArrayAdapter;
+import com.tek3.restaurant.adapters.RecipiesCustomArrayAdapter;
 import com.tek3.restaurant.adapters.models.Recipe;
 
 import java.util.ArrayList;
@@ -16,15 +19,34 @@ import java.util.List;
 /**
  * Created by gaby on 4/18/15.
  */
-public class CategoryRecipies extends ListActivity {
+public class Recipies extends ListActivity {
+    private EditText inputSearch;
+    private RecipiesCustomArrayAdapter adapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_recipies);
+        setContentView(R.layout.activity_recipies);
 
-        CategoryRecipiesCustomArrayAdapter adapter = new CategoryRecipiesCustomArrayAdapter(this, initStaticCategoryRecipies());
+        adapter = new RecipiesCustomArrayAdapter(this, initStaticCategoryRecipies());
 
         setListAdapter(adapter);
+
+        inputSearch = (EditText) findViewById(R.id.inputSearch);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+                Recipies.this.adapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+
+            @Override
+            public void afterTextChanged(Editable arg0) {}
+        });
     }
 
     @Override
@@ -33,11 +55,11 @@ public class CategoryRecipies extends ListActivity {
 
         Recipe selectedRecipe = (Recipe) getListView().getItemAtPosition(position);
 
-        Intent recipeDetailsActivity = new Intent(CategoryRecipies.this, RecipeDetails.class);
+        Intent recipeDetailsActivity = new Intent(Recipies.this, RecipeDetails.class);
 
         recipeDetailsActivity.putExtra("recipe", selectedRecipe);
 
-        CategoryRecipies.this.startActivity(recipeDetailsActivity);
+        Recipies.this.startActivity(recipeDetailsActivity);
     }
 
     public List<Recipe> initStaticCategoryRecipies() {

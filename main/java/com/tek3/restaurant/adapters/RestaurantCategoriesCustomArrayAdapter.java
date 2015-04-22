@@ -1,6 +1,5 @@
 package com.tek3.restaurant.adapters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,7 +25,6 @@ import org.apache.http.client.methods.HttpGet;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by root on 15/04/15.

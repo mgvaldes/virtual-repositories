@@ -7,15 +7,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/restaurantCategoryImageView"/>
+        android:id="@+id/advertisingImageView"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/esp_restaurant_category_name_text"
-        android:id="@+id/restaurantCategoryNameTextView"
-        android:layout_alignBottom="@+id/restaurantCategoryImageView"
+        android:id="@+id/advertisingNameTextView"
+        android:layout_alignBottom="@+id/advertisingImageView"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
