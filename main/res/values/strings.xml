@@ -43,4 +43,5 @@
         <item>Español</item>
         <item>Inglés</item>
     </string-array>
+    <string name="title_activity_recipe_details">RecipeDetailsActivity</string>
 </resources>

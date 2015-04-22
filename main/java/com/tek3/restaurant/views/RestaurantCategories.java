@@ -1,8 +1,10 @@
 package com.tek3.restaurant.views;
 
-import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
 import com.tek3.restaurant.R;
 import com.tek3.restaurant.adapters.RestaurantCategoriesCustomArrayAdapter;
@@ -23,6 +25,17 @@ public class RestaurantCategories extends ListActivity {
         RestaurantCategoriesCustomArrayAdapter adapter = new RestaurantCategoriesCustomArrayAdapter(this, initStaticRestaurantCategories());
 
         setListAdapter(adapter);
+    }
+
+    @Override
+    protected void onListItemClick(ListView list, View view, int position, long id) {
+        super.onListItemClick(list, view, position, id);
+
+        RestaurantCategory selectedRestaurantCategory = (RestaurantCategory) getListView().getItemAtPosition(position);
+
+        Intent categoryRecipiesActivity = new Intent(RestaurantCategories.this, CategoryRecipies.class);
+
+        RestaurantCategories.this.startActivity(categoryRecipiesActivity);
     }
 
     public List<RestaurantCategory> initStaticRestaurantCategories() {

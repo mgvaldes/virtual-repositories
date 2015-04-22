@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tek3.restaurant.views.RecipeDetails"
+    android:background="#ff999999">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/restaurantImageView"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/restaurant"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Nombre del plato"
+                    android:id="@+id/recipeNameTextView"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="por restaurante X"
+                    android:id="@+id/restaurantNameTextView"
+                    android:layout_marginBottom="10dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/difficultyLevelLinearLayout"
+                        android:layout_alignParentLeft="true">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/difficulty1ImageView"
+                            android:src="@drawable/difficulty_selected_icon" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/difficulty2ImageView"
+                            android:src="@drawable/difficulty_selected_icon" />
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/difficulty3ImageView"
+                            android:src="@drawable/difficulty_unselected_icon" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="dificultad media"
+                        android:id="@+id/difficultyLevelTextView"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@id/difficultyLevelLinearLayout"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/preparationTimeImageView"
+                        android:src="@drawable/clock"
+                        android:layout_alignParentRight="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="20 min"
+                        android:id="@+id/preparationTimeTextView"
+                        android:layout_below="@id/preparationTimeImageView"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Comprar"
+                android:id="@+id/buyRecipeButton"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/round_button_background"
+                android:textColor="@android:color/white"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/boughtRecipeInformationLinearLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Ingredientes"
+                    android:id="@+id/ingredientsTitleTextView"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/esp_restaurant_description_text"
+                    android:id="@+id/ingredientsDescriptionTextView"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/youtubeVideoPreviewImageButton"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/youtube_video_preview"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Instrucciones"
+                    android:id="@+id/instructionsTitleTextView"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:id="@+id/stepsListView">
+
+                </ListView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
